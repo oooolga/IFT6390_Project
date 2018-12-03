@@ -16,6 +16,8 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 from util.load_data import load_data
+from util.model_util import save_checkpoint
+from util.model_util import load_checkpoint
 from models import *
 
 state = {'train_loss': [],
@@ -172,11 +174,14 @@ if __name__ == '__main__':
 
 	# load model if needed
 	if args.load_model is None:
-		epoch_start = 0
+		epoch_start = -1
 		best_valid_acc = 0
+	else:
+		model, optimizer, epoch_start, best_valid_acc = \
+								load_checkpoint(args.load_model, model, optimizer)
 
 	# iterative learning
-	for epoch_i in range(epoch_start, args.epochs+1):
+	for epoch_i in range(epoch_start+1, args.epochs+1):
 		print('|\tEpoch {}/{}:'.format(epoch_i, args.epochs))
 		scheduler.step()
 
@@ -198,6 +203,17 @@ if __name__ == '__main__':
 			for k in state:
 				plot_state[k].append(state[k][-1])
 			plot_state['epochs'].append(epoch_i)
+
+		# saving model
+		if state['valid_acc'][-1] > best_valid_acc:
+			best_valid_acc = state['valid_acc'][-1]
+			save_checkpoint({
+				'epoch_i': epoch_i,
+				'state_dict': model.state_dict(),
+				'optimizer': optimizer.state_dict(),
+				'best_acc': best_valid_acc
+				}, os.path.join(model_path, args.model_name+'.pt'))
+
 
 	# plot training curves
 	plt.close('all')
