@@ -15,9 +15,9 @@ class NNModel(nn.Module):
 		self.mlp = nn.Sequential(
 			nn.Linear(self.d_in, int(self.d_in*0.5)),
 			nn.ReLU(),
-			nn.Linear(int(self.d_in*0.5), 200),
+			nn.Linear(int(self.d_in*0.5), 300),
 			nn.ReLU(),
-			nn.Linear(200, 100),
+			nn.Linear(300, 100),
 			nn.ReLU(),
 			nn.Dropout(0.5),
 			nn.Linear(100, self.nlabels)
