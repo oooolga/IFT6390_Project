@@ -58,7 +58,7 @@ optional arguments:
                         Model type.
   --plot_freq PLOT_FREQ
                         plot_freq
-<\pre>
+</pre>
 
 
 ## Examples
