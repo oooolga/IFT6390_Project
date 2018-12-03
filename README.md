@@ -27,37 +27,38 @@ mkdir saved_models results
 python main.py ...
 ```
 usage: main.py [-h] [-lr LEARNING_RATE] [--batch_size BATCH_SIZE]<br />
-               [--test_batch_size TEST_BATCH_SIZE] [--epochs EPOCHS]<br />
-               [--seed SEED] [--weight_decay WEIGHT_DECAY] --model_name<br />
-               MODEL_NAME [--load_model LOAD_MODEL] [--optimizer {Adam,SGD}]<br />
-               [--load_all_train] [--dataset {CIFAR,FMNIST,EMNIST}]<br />
-               [--model {CNN,NN,Regression}] [--plot_freq PLOT_FREQ]<br />
+_______________[--test_batch_size TEST_BATCH_SIZE] [--epochs EPOCHS]<br />
+_______________[--seed SEED] [--weight_decay WEIGHT_DECAY] --model_name<br />
+_______________MODEL_NAME [--load_model LOAD_MODEL] [--optimizer {Adam,SGD}]<br />
+_______________[--load_all_train] [--dataset {CIFAR,FMNIST,EMNIST}]<br />
+_______________[--model {CNN,NN,Regression}] [--plot_freq PLOT_FREQ]<br />
 
 optional arguments:<br />
-  -h, --help            show this help message and exit<br />
-  -lr LEARNING_RATE, --learning_rate LEARNING_RATE<br />
-                        Learning rate.<br />
-  --batch_size BATCH_SIZE<br />
-                        Mini-batch size for training.<br />
-  --test_batch_size TEST_BATCH_SIZE<br />
-                        Mini-batch size for testing.<br />
-  --epochs EPOCHS       Total number of epochs.<br />
-  --seed SEED           Random number seed.<br />
-  --weight_decay WEIGHT_DECAY<br />
-                        Weight decay.<br />
+__-h, --help____________show this help message and exit<br />
+__-lr LEARNING_RATE, --learning_rate LEARNING_RATE<br />
+________________________Learning rate.<br />
+__--batch_size BATCH_SIZE<br />
+________________________Mini-batch size for training.<br />
+__--test_batch_size TEST_BATCH_SIZE<br />
+________________________Mini-batch size for testing.<br />
+__--epochs EPOCHS_______Total number of epochs.<br />
+__--seed SEED___________Random number seed.<br />
+__--weight_decay WEIGHT_DECAY<br />
+________________________Weight decay.<br />
   --model_name MODEL_NAME<br />
-                        Model name.<br />
-  --load_model LOAD_MODEL<br />
-                        Load model path.<br />
-  --optimizer {Adam,SGD}<br />
-                        Optimizer type.<br />
-  --load_all_train      Load all data as train flag.<br />
-  --dataset {CIFAR,FMNIST,EMNIST}<br />
-                        Dataset choice.<br />
-  --model {CNN,NN,Regression}<br />
-                        Model type.<br />
-  --plot_freq PLOT_FREQ<br />
-                        plot_freq<br />
+________________________Model name.<br />
+__--load_model LOAD_MODEL<br />
+________________________Load model path.<br />
+__--optimizer {Adam,SGD}<br />
+________________________Optimizer type.<br />
+__--load_all_train______Load all data as train flag.<br />
+__--dataset {CIFAR,FMNIST,EMNIST}<br />
+________________________Dataset choice.<br />
+__--model {CNN,NN,Regression}<br />
+________________________Model type.<br />
+__--plot_freq PLOT_FREQ<br />
+________________________plot_freq<br />
+
 
 ## Examples
 ### Training a CNN model on CIFAR with SGD
