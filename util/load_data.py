@@ -1,7 +1,13 @@
 import torchvision.datasets as dset
 import torchvision.transforms as transforms
 
-def load_cifar100_data(batch_size, test_batch_size, alpha=0.9):
+def load_data(batch_size, test_batch_size, data_type):
+	datasets = {'CIFAR': (load_cifar100_data, 3),
+				'EMNIST': (None, 1),
+				'FMNIST': (None, 1)}
+	return datasets[data_type][0](batch_size, test_batch_size), datasets[data_type][1]
+
+def load_cifar100_data(batch_size, test_batch_size, alpha=0.8):
 
 	transform_train = transforms.Compose([
 		transforms.RandomCrop(32, padding=4),
