@@ -35,6 +35,9 @@ result_path = 'results/'
 
 
 def load_model(model_name, dataset_name):
+	'''
+	This function returns model by name.
+	'''
 	model_kwargs = set_model_kwargs(model_name, dataset_name)
 	return models[model_name](**model_kwargs)
 
@@ -46,12 +49,18 @@ def set_model_kwargs(model_name, dataset_name):
 		if dataset_name == 'CIFAR':
 			return {'c_in': 3,
 					'nlabels': 10}
-		else:
+		if dataset_name == 'EMNIST':
+			return {'c_in': 1,
+					'nlabels': 47}
+		if dataset_name == 'FMNIST':
 			return {'c_in': 1,
 					'nlabels': 10}
 	if model_name == 'Regression':
 		# add code here
 		pass
+	if model_name == 'NN':
+		# TODO
+		raise NotImplementedError
 	return {}
 
 def parse():

@@ -14,7 +14,6 @@ class CNNModel(nn.Module):
 			nn.Conv2d(c_in, 64, kernel_size=3, padding=1),
 			nn.BatchNorm2d(64),
 			nn.ReLU(inplace=True),
-			nn.MaxPool2d(kernel_size=2),
 			nn.Conv2d(64, 64, kernel_size=5),
 			nn.BatchNorm2d(64),
 			nn.ReLU(inplace=True),
