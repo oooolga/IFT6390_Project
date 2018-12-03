@@ -26,38 +26,39 @@ mkdir saved_models results
 ```
 python main.py ...
 ```
-usage: main.py [-h] [-lr LEARNING_RATE] [--batch_size BATCH_SIZE]<br />
-_______________[--test_batch_size TEST_BATCH_SIZE] [--epochs EPOCHS]<br />
-_______________[--seed SEED] [--weight_decay WEIGHT_DECAY] --model_name<br />
-_______________MODEL_NAME [--load_model LOAD_MODEL] [--optimizer {Adam,SGD}]<br />
-_______________[--load_all_train] [--dataset {CIFAR,FMNIST,EMNIST}]<br />
-_______________[--model {CNN,NN,Regression}] [--plot_freq PLOT_FREQ]<br />
+<pre>
+  usage: main.py [-h] [-lr LEARNING_RATE] [--batch_size BATCH_SIZE]
+               [--test_batch_size TEST_BATCH_SIZE] [--epochs EPOCHS]
+               [--seed SEED] [--weight_decay WEIGHT_DECAY] --model_name
+               MODEL_NAME [--load_model LOAD_MODEL] [--optimizer {Adam,SGD}]
+               [--dataset {CIFAR,FMNIST,EMNIST}] [--model {CNN,NN,Regression}]
+               [--plot_freq PLOT_FREQ]
 
-optional arguments:<br />
-__-h, --help____________show this help message and exit<br />
-__-lr LEARNING_RATE, --learning_rate LEARNING_RATE<br />
-________________________Learning rate.<br />
-__--batch_size BATCH_SIZE<br />
-________________________Mini-batch size for training.<br />
-__--test_batch_size TEST_BATCH_SIZE<br />
-________________________Mini-batch size for testing.<br />
-__--epochs EPOCHS_______Total number of epochs.<br />
-__--seed SEED___________Random number seed.<br />
-__--weight_decay WEIGHT_DECAY<br />
-________________________Weight decay.<br />
-  --model_name MODEL_NAME<br />
-________________________Model name.<br />
-__--load_model LOAD_MODEL<br />
-________________________Load model path.<br />
-__--optimizer {Adam,SGD}<br />
-________________________Optimizer type.<br />
-__--load_all_train______Load all data as train flag.<br />
-__--dataset {CIFAR,FMNIST,EMNIST}<br />
-________________________Dataset choice.<br />
-__--model {CNN,NN,Regression}<br />
-________________________Model type.<br />
-__--plot_freq PLOT_FREQ<br />
-________________________plot_freq<br />
+optional arguments:
+  -h, --help            show this help message and exit
+  -lr LEARNING_RATE, --learning_rate LEARNING_RATE
+                        Learning rate.
+  --batch_size BATCH_SIZE
+                        Mini-batch size for training.
+  --test_batch_size TEST_BATCH_SIZE
+                        Mini-batch size for testing.
+  --epochs EPOCHS       Total number of epochs.
+  --seed SEED           Random number seed.
+  --weight_decay WEIGHT_DECAY
+                        Weight decay.
+  --model_name MODEL_NAME
+                        Model name.
+  --load_model LOAD_MODEL
+                        Load model path.
+  --optimizer {Adam,SGD}
+                        Optimizer type.
+  --dataset {CIFAR,FMNIST,EMNIST}
+                        Dataset choice.
+  --model {CNN,NN,Regression}
+                        Model type.
+  --plot_freq PLOT_FREQ
+                        plot_freq
+<\pre>
 
 
 ## Examples
