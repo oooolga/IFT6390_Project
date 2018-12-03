@@ -29,7 +29,8 @@ plot_state = {'train_loss': [],
 			  'valid_acc': [],
 			  'epochs': []}
 models = {'CNN': CNNModel,
-		  'Regression': RegressionModel}
+		  'Regression': RegressionModel,
+		  'NN': NNModel}
 
 model_path = 'saved_models/'
 result_path = 'results/'
@@ -60,8 +61,15 @@ def set_model_kwargs(model_name, dataset_name):
 		# add code here
 		pass
 	if model_name == 'NN':
-		# TODO
-		raise NotImplementedError
+		if dataset_name == 'CIFAR':
+			return {'d_in': 1024*3,
+					'nlabels': 10}
+		if dataset_name == 'EMNIST':
+			return {'d_in': 784,
+					'nlabels': 47}
+		if dataset_name == 'FMNIST':
+			return {'d_in':784,
+					'nlabels': 10}
 	return {}
 
 def parse():
