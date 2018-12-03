@@ -61,8 +61,8 @@ optional arguments:
 </pre>
 
 
-## Examples
-### Training a CNN model on CIFAR with SGD
+### Training Examples
+#### Training a CNN model on CIFAR with SGD
 ```
 python main.py -lr 0.01 --epochs 100 --weight_decay 5e-4 --model_name CIFAR_CNN --model CNN --optimizer SGD --dataset CIFAR
 ```
@@ -76,7 +76,34 @@ Weight decay: 0.0005<br />
 Batch size: 50<br />
 Plot frequency: 5<br />
 
-### Training CIFAR by loading a pre-trained model
+#### Training CIFAR by loading a pre-trained model
 ```
 python main.py -lr 0.01 --epochs 100 --weight_decay 5e-4 --model_name CIFAR_CNN --model CNN --optimizer SGD --dataset CIFAR --load_model saved_models/CIFAR_CNN.pt
+```
+
+## Evaluate
+```
+python evaluate.py ...
+```
+<pre>
+  usage: evaluate.py [-h] [--dataset {CIFAR,FMNIST,EMNIST}]
+                   [--model {CNN,NN,Regression}] --load_model LOAD_MODEL
+                   [--batch_size BATCH_SIZE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset {CIFAR,FMNIST,EMNIST}
+                        Dataset choice.
+  --model {CNN,NN,Regression}
+                        Model type.
+  --load_model LOAD_MODEL
+                        Load model path.
+  --batch_size BATCH_SIZE
+                        Mini-batch size for testing.
+</pre>
+
+### Evaluate Examples
+#### Evaluate a trained CIFAR CNN model
+```
+python evaluate.py --dataset CIFAR --model CNN --load_model saved_models/CIFAR_CNN.pt 
 ```

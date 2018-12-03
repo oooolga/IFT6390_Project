@@ -16,8 +16,7 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 from util.load_data import load_data
-from util.model_util import save_checkpoint
-from util.model_util import load_checkpoint
+from util.model_util import save_checkpoint, load_checkpoint
 from models import *
 
 state = {'train_loss': [],
