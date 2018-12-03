@@ -82,8 +82,6 @@ def parse():
 	parser.add_argument('--load_model', default=None, type=str, help='Load model path.')
 	parser.add_argument('--optimizer', default='Adam', type=str, choices=['Adam', 'SGD'],
 						help='Optimizer type.')
-	parser.add_argument('--load_all_train', action='store_true',
-						help='Load all data as train flag.')
 	parser.add_argument('--dataset', default='CIFAR', type=str,
 						choices=['CIFAR', 'FMNIST', 'EMNIST'], help='Dataset choice.')
 	parser.add_argument('--model', default='CNN', type=str,
@@ -93,6 +91,17 @@ def parse():
 
 	args = parser.parse_args()
 	return args
+
+def print_model_setting(args):
+	print('Model type: {}'.format(args.model))
+	print('Dataset: {}'.format(args.dataset))
+	print('Optimizer type: {}'.format(args.optimizer))
+	print('Learning rate: {}'.format(args.learning_rate))
+	print('Total number of epochs: {}'.format(args.epochs))
+	print('Learning rate: {}'.format(args.learning_rate))
+	print('Weight decay: {}'.format(args.weight_decay))
+	print('Batch size: {}'.format(args.batch_size))
+	print('Plot frequency: {}\n'.format(args.plot_freq))
 
 def train(model, optimizer, train_loader):
 	model.train()
@@ -159,7 +168,9 @@ if __name__ == '__main__':
 	# count total number of parameters
 	model_parameters = filter(lambda p: p.requires_grad, model.parameters())
 	params = sum([np.prod(p.size()) for p in model_parameters])
-	print('Total number of parameters: {}\n'.format(params))
+	print('\nTotal number of parameters: {}\n'.format(params))
+
+	print_model_setting(args)
 
 	# set optimizer
 	if args.optimizer == 'Adam':
