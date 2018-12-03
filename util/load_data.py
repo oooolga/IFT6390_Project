@@ -1,11 +1,12 @@
+import torch
 import torchvision.datasets as dset
 import torchvision.transforms as transforms
 
 def load_data(batch_size, test_batch_size, data_type):
-	datasets = {'CIFAR': (load_cifar100_data, 3),
-				'EMNIST': (None, 1),
-				'FMNIST': (None, 1)}
-	return datasets[data_type][0](batch_size, test_batch_size), datasets[data_type][1]
+	datasets = {'CIFAR': load_cifar100_data,
+				'EMNIST': None,
+				'FMNIST': None}
+	return datasets[data_type](batch_size, test_batch_size)
 
 def load_cifar100_data(batch_size, test_batch_size, alpha=0.8):
 
