@@ -48,7 +48,11 @@ def set_model_kwargs(model_name, dataset_name):
 					'nlabels': 10}
 	if model_name == 'Regression':
 		# add code here
-		pass
+		if dataset_name == 'CIFAR':
+			return {'c_in': 3,
+					'input_size': 32,
+					'nlabels': 10}
+		#pass
 	if model_name == 'NN':
 		# TODO
 		raise NotImplementedError
