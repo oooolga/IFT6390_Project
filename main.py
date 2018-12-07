@@ -66,7 +66,7 @@ def set_model_kwargs(model_name, dataset_name):
 		if dataset_name == 'EMNIST':
 			return {'c_in': 1,
 					'input_size': 28,
-					'nlabels': 10}
+					'nlabels': 47}
 		if dataset_name == 'CIFAR':
 			return {'c_in': 3,
 					'input_size': 32,
