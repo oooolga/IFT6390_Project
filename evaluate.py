@@ -24,6 +24,7 @@ state = {'train_loss': [],
 
 models = {'CNN': CNNModel,
 		  'Regression': RegressionModel,
+		  'NN': NNModel,
 		  'PolyRegression' : PolyRegressionModel}
 
 #polynome degree for polynomial regression
@@ -82,8 +83,15 @@ def set_model_kwargs(model_name, dataset_name):
 					'nlabels': 10,
 					'ndegree': ndegree}
 	if model_name == 'NN':
-		# TODO
-		raise NotImplementedError
+		if dataset_name == 'CIFAR':
+			return {'d_in': 1024*3,
+					'nlabels': 10}
+		if dataset_name == 'EMNIST':
+			return {'d_in': 784,
+					'nlabels': 47}
+		if dataset_name == 'FMNIST':
+			return {'d_in':784,
+					'nlabels': 10}
 	return {}
 
 def parse():
