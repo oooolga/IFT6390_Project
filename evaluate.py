@@ -26,7 +26,8 @@ models = {'CNN': CNNModel,
 		  'Regression': RegressionModel,
 		  'PolyRegression' : PolyRegressionModel}
 
-
+#polynome degree for polynomial regression
+ndegree = 4
 
 def load_model(model_name, dataset_name):
 	'''
@@ -69,17 +70,17 @@ def set_model_kwargs(model_name, dataset_name):
 			return {'c_in': 1,
 					'input_size': 28,
 					'nlabels': 10,
-					'ndegree': pdegree}
+					'ndegree': ndegree}
 		if dataset_name == 'EMNIST':
 			return {'c_in': 1,
 					'input_size': 28,
 					'nlabels': 47,
-					'ndegree': pdegree}
+					'ndegree': ndegree}
 		if dataset_name == 'CIFAR':
 			return {'c_in': 3,
 					'input_size': 32,
 					'nlabels': 10,
-					'ndegree': pdegree}
+					'ndegree': ndegree}
 	if model_name == 'NN':
 		# TODO
 		raise NotImplementedError
@@ -131,7 +132,7 @@ if __name__ == '__main__':
 	# get arguments
 	args = parse()
 
-	pdegree=args.pdegree
+	ndegree=args.pdegree
 	# load dataset
 	train_loader, valid_loader, test_loader = \
 			load_data(args.batch_size, args.batch_size, args.dataset)
