@@ -15,6 +15,9 @@ olga.xu823@gmail.com
 * Pillow==5.3.0
 * torch==0.4.1.post2
 
+## Documents
+ * Project writeup: [overleaf link](https://www.overleaf.com/read/snfsbsxrqqgk)
+
 ## Code Setup
 ```
 git clone https://github.com/oooolga/IFT6390_Project.git
