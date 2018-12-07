@@ -23,7 +23,10 @@ state = {'train_loss': [],
 		 'test_acc': []}
 
 models = {'CNN': CNNModel,
-		  'Regression': RegressionModel}
+		  'Regression': RegressionModel,
+		  'PolyRegression' : PolyRegressionModel}
+
+
 
 def load_model(model_name, dataset_name):
 	'''
@@ -60,7 +63,23 @@ def set_model_kwargs(model_name, dataset_name):
 			return {'c_in': 3,
 					'input_size': 32,
 					'nlabels': 10}
-		#pass
+
+	if model_name == 'PolyRegression':
+		if dataset_name == 'FMNIST':
+			return {'c_in': 1,
+					'input_size': 28,
+					'nlabels': 10,
+					'ndegree': pdegree}
+		if dataset_name == 'EMNIST':
+			return {'c_in': 1,
+					'input_size': 28,
+					'nlabels': 47,
+					'ndegree': pdegree}
+		if dataset_name == 'CIFAR':
+			return {'c_in': 3,
+					'input_size': 32,
+					'nlabels': 10,
+					'ndegree': pdegree}
 	if model_name == 'NN':
 		# TODO
 		raise NotImplementedError
@@ -71,10 +90,12 @@ def parse():
 	parser.add_argument('--dataset', default='CIFAR', type=str,
 						choices=['CIFAR', 'FMNIST', 'EMNIST'], help='Dataset choice.')
 	parser.add_argument('--model', default='CNN', type=str,
-						choices=['CNN', 'NN', 'Regression'], help='Model type.')
+						choices=['CNN', 'NN', 'Regression', 'PolyRegression'], help='Model type.')
 	parser.add_argument('--load_model', required=True, type=str, help='Load model path.')
 	parser.add_argument('--batch_size', default=200, type=int,
 						help='Mini-batch size for testing.')
+	parser.add_argument('--pdegree', default=4, type=int,
+						help='polynome degree')
 
 	args = parser.parse_args()
 	return args
@@ -110,6 +131,7 @@ if __name__ == '__main__':
 	# get arguments
 	args = parse()
 
+	pdegree=args.pdegree
 	# load dataset
 	train_loader, valid_loader, test_loader = \
 			load_data(args.batch_size, args.batch_size, args.dataset)

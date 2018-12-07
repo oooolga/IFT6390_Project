@@ -30,10 +30,14 @@ plot_state = {'train_loss': [],
 			  'epochs': []}
 models = {'CNN': CNNModel,
 		  'Regression': RegressionModel,
-		  'NN': NNModel}
+		  'NN': NNModel,
+		  'PolyRegression' : PolyRegressionModel}
 
 model_path = 'saved_models/'
 result_path = 'results/'
+
+#polynome degree for Polynomial Regression
+ndegree = 4
 
 
 def load_model(model_name, dataset_name):
@@ -71,7 +75,23 @@ def set_model_kwargs(model_name, dataset_name):
 			return {'c_in': 3,
 					'input_size': 32,
 					'nlabels': 10}
-		#pass
+	if model_name == 'PolyRegression':
+		if dataset_name == 'FMNIST':
+			return {'c_in': 1,
+					'input_size': 28,
+					'nlabels': 10,
+					'ndegree': ndegree}
+		if dataset_name == 'EMNIST':
+			return {'c_in': 1,
+					'input_size': 28,
+					'nlabels': 47,
+					'ndegree': ndegree}
+		if dataset_name == 'CIFAR':
+			return {'c_in': 3,
+					'input_size': 32,
+					'nlabels': 10,
+					'ndegree': ndegree}
+
 	if model_name == 'NN':
 		if dataset_name == 'CIFAR':
 			return {'d_in': 1024*3,
@@ -104,15 +124,19 @@ def parse():
 	parser.add_argument('--dataset', default='CIFAR', type=str,
 						choices=['CIFAR', 'FMNIST', 'EMNIST'], help='Dataset choice.')
 	parser.add_argument('--model', default='CNN', type=str,
-						choices=['CNN', 'NN', 'Regression'], help='Model type.')
+						choices=['CNN', 'NN', 'Regression','PolyRegression'], help='Model type.')
 	parser.add_argument('--plot_freq', default=5, type=int,
 						help='plot_freq')
+	parser.add_argument('--pdegree', default=4, type=int,
+						help='polynome degree')
 
 	args = parser.parse_args()
 	return args
 
 def print_model_setting(args):
 	print('Model type: {}'.format(args.model))
+	if args.model == 'PolyRegression':
+		print('polynome degree: {}'.format(args.pdegree))
 	print('Dataset: {}'.format(args.dataset))
 	print('Optimizer type: {}'.format(args.optimizer))
 	print('Learning rate: {}'.format(args.learning_rate))
@@ -169,6 +193,7 @@ def test(model, data_loader, mode='valid'):
 if __name__ == '__main__':
 	# get arguments
 	args = parse()
+	ndegree= args.pdegree;
 
 	# set seeds
 	torch.manual_seed(args.seed)
